@@ -5,8 +5,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
-        classpath 'com.novoda:bintray-release:0.2.7'
+        classpath 'com.android.tools.build:gradle:2.1.0'
+//        classpath 'com.novoda:bintray-release:0.2.7'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -14,8 +14,8 @@ buildscript {
 }
 
 allprojects {
-    version = project.VERSION_NAME
-    group = project.GROUP
+    version = VERSION_NAME
+    group = GROUP
 
     repositories {
         jcenter()
