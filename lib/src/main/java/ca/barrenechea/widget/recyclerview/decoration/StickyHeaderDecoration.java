@@ -64,16 +64,20 @@ public class StickyHeaderDecoration extends RecyclerView.ItemDecoration {
         int headerHeight = 0;
         if (position != RecyclerView.NO_POSITION && hasHeader(position)) {
             final long positionHeaderId = mAdapter.getHeaderId(position);
-            boolean isFirstInGroup = false;
-            for (int pos = position; pos >= 0; pos--) {
-                long posHeaderId = mAdapter.getHeaderId(pos);
-                if (posHeaderId != positionHeaderId) {
-                    if (pos + 1 == position) {
-                        isFirstInGroup = true;
+            boolean isFirstInGroup = position == 0;
+
+            if (isFirstInGroup == false) {
+                for (int pos = position; pos >= 0; pos--) {
+                    long posHeaderId = mAdapter.getHeaderId(pos);
+                    if (posHeaderId != positionHeaderId) {
+                        if (pos + 1 == position) {
+                            isFirstInGroup = true;
+                        }
+                        break;
                     }
-                    break;
                 }
             }
+
             if (isFirstInGroup) {
                 View header = getHeader(parent, position).itemView;
                 headerHeight = getHeaderHeightForLayout(header);
